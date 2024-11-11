@@ -1,5 +1,4 @@
-import { create, all, derivative, parse, evaluate } from "mathjs";
-
+import { create, all, derivative, parse, evaluate } from "mathjs"; //importamos las funciones que vamos a ocupar
 // Crear una instancia de mathjs
 const math = create(all);
 

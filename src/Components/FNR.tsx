@@ -1,6 +1,6 @@
 import { useState, ChangeEvent, FormEvent, useCallback } from "react";
 import { nr } from "../types"; // tipos de info
-import { deriveFunction, iterativeProcess } from "../data/mathUtilities"; // import de tus funciones matemáticas
+import { iterativeProcess } from "../data/NR"; // import de tus funciones matemáticas
 
 export default function FNR() {
   const [info, setInfo] = useState<nr>({
@@ -37,8 +37,8 @@ export default function FNR() {
       setResultados(resultadosIterativos); // Almacena los resultados en el estado
 
       // Llama a la función deriveFunction para obtener la derivada de la función
-      const derived = deriveFunction(info.fx);
-      setDerivada(derived); // Almacena la derivada en el estado
+      //const derived = deriveFunction(info.fx);
+      //setDerivada(derived); // Almacena la derivada en el estado
     } catch (error) {
       console.error("Error al procesar:", error);
     }
@@ -84,10 +84,9 @@ export default function FNR() {
           className="h-8 w-full rounded-lg text-center"
           placeholder="Ej. 0.1, 5, 100"
         />
-
         <button
           type="button" // Cambiar el tipo a "button"
-          onClick={inSubmit} // Maneja el clic
+          onClick={inSubmit} // Maneja el clic, por alguna razon marca error pero si lo borras no funciona
           className="text-white bg-indigo-900 hover:text-yellow-500 p-3 my-1 w-full rounded hover:bg-indigo-700 cursor-pointer disabled:opacity-50"
           disabled={!isValidActivity()}
         >
@@ -122,10 +121,10 @@ export default function FNR() {
                   {resultado.iteracion}
                 </td>
                 <td className="py-2 px-4 border-b border-gray-300">
-                  {resultado.xi.toFixed(4)}
+                  {resultado.xi.toFixed(5)}
                 </td>
                 <td className="py-2 px-4 border-b border-gray-300">
-                  {resultado.error.toFixed(4)}
+                  {resultado.error.toFixed(5)}
                 </td>
               </tr>
             ))}

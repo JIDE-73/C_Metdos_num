@@ -2,18 +2,19 @@ import { useState, ChangeEvent, FormEvent } from "react";
 import { categories } from "../data/Categories";
 import FNR from "./FNR";
 import FNRM from "./FNRM";
+import Bis from "./Biseccion";
 
 // Mapa de componentes de formularios por categoría
 const formComponents: { [key: number]: JSX.Element } = {
-  1: <></>,
-  2: <></>,
-  3: <></>,
-  4: <></>,
-  5: <></>,
-  6: <FNR />,
-  7: <FNRM />,
-  8: <></>,
-  9: <></>,
+  1: <></>, //3 errores
+  2: <></>, //McLaurin
+  3: <></>, //Taylor
+  4: <Bis />, //Biseccion
+  5: <></>, //Interpolacion
+  6: <FNR />, //Newton
+  7: <FNRM />, //mejorado
+  8: <></>, //Secante
+  9: <></>, //
 };
 
 export default function Formulario() {

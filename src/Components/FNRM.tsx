@@ -4,7 +4,7 @@ import {
   evaluateFunction,
   firstDerivative,
   secondDerivative,
-} from "../data/mathUtilities";
+} from "../data/NR";
 
 interface IterationResult {
   iteration: number;
@@ -39,37 +39,36 @@ export default function FNRM() {
     e.preventDefault();
     const { fx, xi, error } = info;
     const tolerance = error;
-  
+
     let currentXi = xi;
     let currentError = 100;
     let iteration = 1;
     const newIterations: IterationResult[] = [];
-  
+
     while (currentError > tolerance) {
       const fxValue = evaluateFunction(fx, currentXi);
       const fxPrime = firstDerivative(fx, currentXi);
       const fxDoublePrime = secondDerivative(fx, currentXi);
-  
+
       const nextXi =
         currentXi -
         (fxValue * fxPrime) / (Math.pow(fxPrime, 2) - fxValue * fxDoublePrime);
-  
+
       currentError = Math.abs((nextXi - currentXi) / nextXi) * 100;
-  
+
       newIterations.push({
         iteration,
-        xi: nextXi,  // Usamos nextXi para la siguiente iteración
+        xi: nextXi, // Usamos nextXi para la siguiente iteración
         error: currentError,
       });
-  
+
       // Actualizar los valores para la siguiente iteración
       currentXi = nextXi;
       iteration += 1;
     }
-  
+
     setIterations(newIterations);
   };
-  
 
   return (
     <div>
