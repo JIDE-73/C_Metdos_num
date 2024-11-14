@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent, useCallback } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { nr } from "../types"; // tipos de info
 import { iterativeProcess } from "../data/NR"; // import de tus funciones matemáticas
 
@@ -20,12 +20,6 @@ export default function FNR() {
       [id]: id === "xi" || id === "error" ? +value || 0 : value,
     }));
   };
-
-  // Validación para habilitar el botón de envío
-  const isValidActivity = useCallback(() => {
-    const { fx, xi, error } = info;
-    return fx.trim() !== "" && !isNaN(xi) && error > 0;
-  }, [info]);
 
   // Manejo del envío del formulario: evaluación y derivación
   const inSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -88,31 +82,30 @@ export default function FNR() {
           type="button" // Cambiar el tipo a "button"
           onClick={inSubmit} // Maneja el clic, por alguna razon marca error pero si lo borras no funciona
           className="text-white bg-indigo-900 hover:text-yellow-500 p-3 my-1 w-full rounded hover:bg-indigo-700 cursor-pointer disabled:opacity-50"
-          disabled={!isValidActivity()}
         >
           Resolver
         </button>
       </div>
 
       {/* Mostrar resultados de las iteraciones */}
-      <div className="mt-4">
-        <h3 className="font-extrabold text-xl mb-2">Resultados:</h3>
-        <table className="min-w-full bg-gray-50 border border-gray-300 rounded-lg shadow-md">
-          <thead className="bg-indigo-900">
-            <tr className="rounded-t-lg">
-              <th className="py-2 px-4 text-left text-gray-300 font-bold rounded-tl-lg">
-                Iteración
-              </th>
-              <th className="py-2 px-4 text-left text-gray-300 font-bold">
-                Xi
-              </th>
-              <th className="py-2 px-4 text-left text-gray-300 font-bold rounded-tr-lg">
-                % Error
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {resultados.map((resultado, index) => (
+      {resultados.map((resultado, index) => (
+        <div className="mt-4">
+          <h3 className="font-extrabold text-xl mb-2">Resultados:</h3>
+          <table className="min-w-full bg-gray-50 border border-gray-300 rounded-lg shadow-md">
+            <thead className="bg-indigo-900">
+              <tr className="rounded-t-lg">
+                <th className="py-2 px-4 text-left text-gray-300 font-bold rounded-tl-lg">
+                  Iteración
+                </th>
+                <th className="py-2 px-4 text-left text-gray-300 font-bold">
+                  Xi
+                </th>
+                <th className="py-2 px-4 text-left text-gray-300 font-bold rounded-tr-lg">
+                  % Error
+                </th>
+              </tr>
+            </thead>
+            <tbody>
               <tr
                 key={index}
                 className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
@@ -127,10 +120,10 @@ export default function FNR() {
                   {resultado.error.toFixed(5)}
                 </td>
               </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+            </tbody>
+          </table>
+        </div>
+      ))}
     </form>
   );
 }

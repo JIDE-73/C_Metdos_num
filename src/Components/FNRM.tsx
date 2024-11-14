@@ -1,4 +1,4 @@
-import { useState, ChangeEvent, FormEvent, useCallback } from "react";
+import { useState, ChangeEvent, FormEvent } from "react";
 import { nr } from "../types";
 import {
   evaluateFunction,
@@ -28,12 +28,6 @@ export default function FNRM() {
       [id]: id === "xi" || id === "error" ? parseFloat(value) || 0 : value,
     }));
   };
-
-  // Verificación de validez del formulario
-  const isFormValid = useCallback(() => {
-    const { fx, xi, error } = info;
-    return fx.trim() !== "" && !isNaN(xi) && error > 0;
-  }, [info]);
 
   const handleSubmit = (e: FormEvent<HTMLInputElement>) => {
     e.preventDefault();
@@ -71,57 +65,54 @@ export default function FNRM() {
   };
 
   return (
-    <div className="flex flex-col items-center p-4">
-      <form>
-        <div className="flex flex-col items-center space-y-4">
-          <label htmlFor="fx" className="font-extrabold">
-            F(x):
-          </label>
-          <input
-            id="fx"
-            type="text"
-            value={info.fx}
-            onChange={handleChange}
-            className="h-8 w-full rounded-lg text-center"
-            placeholder="Ej. x^2 + 2*x + 1"
-          />
+    <form>
+      <div className="flex flex-col items-center space-y-4">
+        <label htmlFor="fx" className="font-extrabold">
+          F(x):
+        </label>
+        <input
+          id="fx"
+          type="text"
+          value={info.fx}
+          onChange={handleChange}
+          className="h-8 w-full rounded-lg text-center"
+          placeholder="Ej. x^2 + 2*x + 1"
+        />
 
-          <label htmlFor="xi" className="font-extrabold p-3">
-            Xi
-          </label>
-          <input
-            id="xi"
-            type="number"
-            step="0.01"
-            value={info.xi}
-            onChange={handleChange}
-            className="h-8 w-full rounded-lg text-center"
-            placeholder="Ej. 1, 2.2, 123.123"
-          />
+        <label htmlFor="xi" className="font-extrabold p-3">
+          Xi
+        </label>
+        <input
+          id="xi"
+          type="number"
+          step="0.01"
+          value={info.xi}
+          onChange={handleChange}
+          className="h-8 w-full rounded-lg text-center"
+          placeholder="Ej. 1, 2.2, 123.123"
+        />
 
-          <label htmlFor="error" className="font-extrabold p-3">
-            % Error
-          </label>
-          <input
-            id="error"
-            type="number"
-            step="0.01"
-            value={info.error}
-            onChange={handleChange}
-            className="h-8 w-full rounded-lg text-center"
-            placeholder="Ej. 0.1, 5, 100"
-          />
+        <label htmlFor="error" className="font-extrabold p-3">
+          % Error
+        </label>
+        <input
+          id="error"
+          type="number"
+          step="0.01"
+          value={info.error}
+          onChange={handleChange}
+          className="h-8 w-full rounded-lg text-center"
+          placeholder="Ej. 0.1, 5, 100"
+        />
 
-          {/* Botón de envío */}
-          <input
-            type="submit"
-            value="Resolver"
-            onClick={handleSubmit}
-            className="text-white bg-indigo-900 hover:text-yellow-500 p-3 my-1 w-full rounded hover:bg-indigo-700 cursor-pointer disabled:opacity-50"
-            disabled={!isFormValid()}
-          />
-        </div>
-      </form>
+        {/* Botón de envío */}
+        <input
+          type="submit"
+          value="Resolver"
+          onClick={handleSubmit}
+          className="text-white bg-indigo-900 hover:text-yellow-500 p-3 my-1 w-full rounded hover:bg-indigo-700 cursor-pointer disabled:opacity-50"
+        />
+      </div>
 
       {/* Tabla de resultados de iteraciones */}
       {iterations.length > 0 && (
@@ -160,6 +151,6 @@ export default function FNRM() {
           </table>
         </div>
       )}
-    </div>
+    </form>
   );
 }

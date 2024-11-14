@@ -52,9 +52,16 @@ export interface Terrores {
   ePorcentual: number;
 }
 
-//serie de taylor
+//serie de macLauren
 export interface McL {
   approx: number;
   relE: number;
   approxE: number;
+}
+
+//serie Taylor
+export interface serieT {
+  iteracion: number;
+  AproV: number;
+  errorTr: number;
 }
