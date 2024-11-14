@@ -17,11 +17,14 @@ export default function Biseccion() {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
+    <div className="flex flex-col items-center p-6 max-w-4xl mx-auto">
       <h2 className="text-2xl font-bold mb-4 text-center">Bisección</h2>
 
       {/* Formulario para cambiar los valores */}
-      <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col space-y-4 w-full max-w-lg"
+      >
         <label className="font-extrabold">
           F(x):
           <input
@@ -30,6 +33,7 @@ export default function Biseccion() {
             onChange={(e) => setFx(e.target.value)}
             className="h-8 w-full rounded-lg text-center mt-2 p-2 border border-gray-300"
             placeholder="Ej. x^2 + 2*x + 1"
+            tabIndex={1} // Tabula primero a este campo
           />
         </label>
 
@@ -42,6 +46,7 @@ export default function Biseccion() {
             onChange={(e) => setXi(Number(e.target.value))}
             className="h-8 w-full rounded-lg text-center mt-2 p-2 border border-gray-300"
             placeholder="Ej. 1, 2.2, 123.123"
+            tabIndex={2} // Tabula a este campo segundo
           />
         </label>
 
@@ -54,6 +59,7 @@ export default function Biseccion() {
             onChange={(e) => setXs(Number(e.target.value))}
             className="h-8 w-full rounded-lg text-center mt-2 p-2 border border-gray-300"
             placeholder="Ej. 1, 2.2, 123.123"
+            tabIndex={3} // Tabula a este campo tercero
           />
         </label>
 
@@ -66,6 +72,7 @@ export default function Biseccion() {
             onChange={(e) => setError(Number(e.target.value))}
             className="h-8 w-full rounded-lg text-center mt-2 p-2 border border-gray-300"
             placeholder="Ej. 0.1, 5, 100"
+            tabIndex={4} // Tabula a este campo cuarto
           />
         </label>
 
@@ -73,6 +80,7 @@ export default function Biseccion() {
           type="submit"
           onClick={handleSubmit}
           className="text-white bg-indigo-900 hover:text-yellow-500 p-3 my-2 w-full rounded hover:bg-indigo-700 cursor-pointer"
+          tabIndex={5} // Este botón será el siguiente
         >
           Resolver
         </button>
@@ -88,20 +96,11 @@ export default function Biseccion() {
             <table className="min-w-full bg-gray-50 border border-gray-300 rounded-lg shadow-md">
               <thead className="bg-indigo-900">
                 <tr>
-                  <th className="py-2 px-4 text-left text-gray-300 font-bold">
-                    Iteración
-                  </th>
-                  <th className="py-2 px-4 text-left text-gray-300 font-bold">
-                    Xi
-                  </th>
-                  <th className="py-2 px-4 text-left text-gray-300 font-bold">
-                    Xs
+                  <th className="py-0 px-0 text-left text-gray-300 font-bold">
+                    I
                   </th>
                   <th className="py-2 px-4 text-left text-gray-300 font-bold">
                     Xr
-                  </th>
-                  <th className="py-2 px-4 text-left text-gray-300 font-bold">
-                    f(xi)
                   </th>
                   <th className="py-2 px-4 text-left text-gray-300 font-bold">
                     f(xr)
@@ -120,20 +119,11 @@ export default function Biseccion() {
                     key={index}
                     className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
                   >
-                    <td className="py-2 px-4 border-b border-gray-300">
+                    <td className="py-0 px-0 border-b border-gray-300">
                       {resultado.iteracion}
                     </td>
                     <td className="py-2 px-4 border-b border-gray-300">
-                      {resultado.xi.toFixed(5)}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
-                      {resultado.xs.toFixed(5)}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
                       {resultado.xr.toFixed(5)}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
-                      {resultado.fxi.toFixed(5)}
                     </td>
                     <td className="py-2 px-4 border-b border-gray-300">
                       {resultado.fxr.toFixed(5)}

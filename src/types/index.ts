@@ -13,9 +13,27 @@ export type nr = {
   xi: number;
   error: number;
 };
-
 //editables --->
-//para retorno de funciones
+//datos de resultado secante
+export interface iterSec {
+  iteraciones: number; // Cambié el nombre de "interaciones" a "iteraciones" (acentuación)
+  xiPrev: number; // Renombrado de xi_1 a xiPrev
+  xiCurr: number; // Renombrado de xi a xiCurr
+  xiNext: number; // Renombrado de xim1 a xiNext
+  fXiPrev: number; // Renombrado de fxi_1 a fXiPrev
+  fXiCurr: number; // Renombrado de fxi a fXiCurr
+  fXiNext: number; // Renombrado de fxm1 a fXiNext
+  error: number;
+}
+
+export interface IteracionSecante {
+  iteraciones: number;
+  xi: number;
+  fxi: number;
+  error: number;
+}
+
+//Biseccion
 export interface IteracionBiseccion {
   iteracion: number;
   xi: number;
@@ -27,17 +45,9 @@ export interface IteracionBiseccion {
   er: number; // Error
 }
 
-export type inter = {
-  //interpolacion
-  fx: string;
-  xn: number;
-  x: number;
-};
-
-export type sec = {
-  //secante
-  fx: string;
-  xi: number;
-  ximen1: number; //xi - 1
-  error: number;
-};
+//3 errores
+export interface Terrores {
+  eAbsoluto: number;
+  eRelativo: number;
+  ePorcentual: number;
+}
