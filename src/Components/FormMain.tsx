@@ -5,11 +5,12 @@ import FNR from "./FNR";
 import FNRM from "./FNRM";
 import Bis from "./Biseccion";
 import Sec from "./Secante";
+import Mc from "./McL";
 
 // Mapa de componentes de formularios por categoría
 const formComponents: { [key: number]: JSX.Element } = {
   1: <Te />, //3 errores
-  2: <></>, //McLaurin
+  2: <Mc />, //McLaurin
   3: <></>, //Taylor
   4: <Bis />, //Biseccion
   5: <></>, //Interpolacion

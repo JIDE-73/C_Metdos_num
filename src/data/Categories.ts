@@ -2,7 +2,7 @@ import { Category } from "../types";
 
 export const categories: Category[] = [
   { id: 1, name: "3 Errores" },
-  { id: 2, name: "Serie de McLaurin" },
+  { id: 2, name: "Serie de Maclaurin" },
   { id: 3, name: "Serie de taylor" },
   { id: 4, name: "Biseccion" },
   { id: 5, name: "Interpolacion" },

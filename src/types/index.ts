@@ -51,3 +51,10 @@ export interface Terrores {
   eRelativo: number;
   ePorcentual: number;
 }
+
+//serie de taylor
+export interface McL {
+  approx: number;
+  relE: number;
+  approxE: number;
+}

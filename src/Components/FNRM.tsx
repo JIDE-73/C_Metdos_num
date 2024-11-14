@@ -71,7 +71,7 @@ export default function FNRM() {
   };
 
   return (
-    <div>
+    <div className="flex flex-col items-center p-4">
       <form>
         <div className="flex flex-col items-center space-y-4">
           <label htmlFor="fx" className="font-extrabold">
@@ -125,7 +125,7 @@ export default function FNRM() {
 
       {/* Tabla de resultados de iteraciones */}
       {iterations.length > 0 && (
-        <div className="mt-8">
+        <div className="overflow-x-auto mt-6 w-full max-w-md">
           <h2 className="font-bold text-center">Resultados de Iteraciones</h2>
           <table className="min-w-full bg-gray-100 border border-gray-300 rounded-lg shadow-md">
             <thead className="bg-indigo-900 rounded-t-lg">

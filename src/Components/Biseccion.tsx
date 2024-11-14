@@ -17,9 +17,7 @@ export default function Biseccion() {
   };
 
   return (
-    <div className="flex flex-col items-center p-6 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4 text-center">Bisección</h2>
-
+    <div className="flex flex-col items-center p-4">
       {/* Formulario para cambiar los valores */}
       <form
         onSubmit={handleSubmit}
@@ -88,7 +86,7 @@ export default function Biseccion() {
 
       {/* Tabla para mostrar los resultados */}
       {resultados.length > 0 && (
-        <div className="mt-6 w-full flex justify-center">
+        <div className="overflow-x-auto mt-6 w-full max-w-md">
           <div className="w-full max-w-4xl">
             <h3 className="font-extrabold text-xl mb-3 text-center">
               Resultados:
@@ -96,7 +94,7 @@ export default function Biseccion() {
             <table className="min-w-full bg-gray-50 border border-gray-300 rounded-lg shadow-md">
               <thead className="bg-indigo-900">
                 <tr>
-                  <th className="py-0 px-0 text-left text-gray-300 font-bold">
+                  <th className="py-2 px-2 text-left text-gray-300 font-bold">
                     I
                   </th>
                   <th className="py-2 px-4 text-left text-gray-300 font-bold">
@@ -119,7 +117,7 @@ export default function Biseccion() {
                     key={index}
                     className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
                   >
-                    <td className="py-0 px-0 border-b border-gray-300">
+                    <td className="py-2 px-2 border-b border-gray-300">
                       {resultado.iteracion}
                     </td>
                     <td className="py-2 px-4 border-b border-gray-300">

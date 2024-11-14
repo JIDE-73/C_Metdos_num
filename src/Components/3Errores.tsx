@@ -22,8 +22,6 @@ export default function CalcularErrores() {
 
   return (
     <div className="flex flex-col items-center p-6 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4 text-center">Calcular Errores</h2>
-
       {/* Formulario para los valores */}
       <form
         onSubmit={handleSubmit}
@@ -90,13 +88,13 @@ export default function CalcularErrores() {
                     className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
                   >
                     <td className="py-2 px-4 border-b border-gray-300">
-                      {error.eAbsoluto.toFixed(3)}
+                      {error.eAbsoluto.toFixed(5)}
                     </td>
                     <td className="py-2 px-4 border-b border-gray-300">
-                      {error.eRelativo.toFixed(3)}
+                      {error.eRelativo.toFixed(5)}
                     </td>
                     <td className="py-2 px-4 border-b border-gray-300">
-                      {error.ePorcentual.toFixed(3)}%
+                      {error.ePorcentual.toFixed(5)}%
                     </td>
                   </tr>
                 ))}

@@ -31,11 +31,7 @@ export default function MetodoSecante() {
   };
 
   return (
-    <div className="p-6 max-w-4xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4 text-center">
-        Método de la Secante
-      </h2>
-
+    <div className="flex flex-col items-center p-4">
       {/* Formulario para cambiar los valores */}
       <form onSubmit={handleSubmit} className="flex flex-col space-y-4">
         <label className="font-extrabold">
@@ -101,7 +97,7 @@ export default function MetodoSecante() {
             <h3 className="font-extrabold text-xl mb-3 text-center">
               Resultados:
             </h3>
-            <div className="overflow-x-auto">
+            <div className="overflow-x-auto mt-6 w-full max-w-md">
               {" "}
               {/* Añadimos desplazamiento horizontal */}
               <table className="min-w-full bg-gray-50 border border-gray-300 rounded-lg shadow-md">
