@@ -1,5 +1,6 @@
 import { Category } from "../types";
 
+//aqui se puede agregar mas ids, nombres para metodos
 export const categories: Category[] = [
   { id: 1, name: "3 Errores" },
   { id: 2, name: "Serie de Maclaurin" },
@@ -9,5 +10,4 @@ export const categories: Category[] = [
   { id: 6, name: "Newton Rapshon" },
   { id: 7, name: "Newton Rapshon Mejorado" },
   { id: 8, name: "Metodo de la secante" },
-  { id: 9, name: "?" },
 ];

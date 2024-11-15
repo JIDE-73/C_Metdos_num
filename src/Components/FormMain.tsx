@@ -18,7 +18,6 @@ const formComponents: { [key: number]: JSX.Element } = {
   6: <FNR />, //Newton
   7: <FNRM />, //mejorado
   8: <Sec />, //Secante
-  9: <></>, //
 };
 
 export default function Formulario() {
