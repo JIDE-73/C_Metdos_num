@@ -1,13 +1,16 @@
 {
   "name": "nrm",
+  "homepage": "https://JIDE-73.github.io/C_Metdos_num",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "vite --host",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "mathjs": "^13.2.0",
