@@ -1,156 +1,118 @@
-import { useState, ChangeEvent, FormEvent } from "react";
-import { nr } from "../types";
-import {
-  evaluateFunction,
-  firstDerivative,
-  secondDerivative,
-} from "../data/NR";
+import { useState } from "react";
+import { nrM } from "../data/NR"; // Importa la función de Newton-Raphson Mejorado
+import { nr } from "../types"; // Asegúrate de que IteracionNR esté bien definida
 
-interface IterationResult {
-  iteration: number;
-  xi: number;
-  error: number;
-}
+export default function NewtonRaphsonMejorado() {
+  const [fx, setFx] = useState<string>("x^3 - 2*x - 5");
+  const [xi, setXi] = useState<number>(2);
+  const [error, setError] = useState<number>(0.01);
+  const [resultados, setResultados] = useState<nr[]>([]);
 
-export default function FNRM() {
-  const [info, setInfo] = useState<nr>({
-    fx: "x^2 + 2*x + 1",
-    xi: 0,
-    error: 0.1,
-  });
-  const [iterations, setIterations] = useState<IterationResult[]>([]);
-
-  // Manejo del cambio en los inputs
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    const { id, value } = e.target;
-    setInfo((prevInfo) => ({
-      ...prevInfo,
-      [id]: id === "xi" || id === "error" ? parseFloat(value) || 0 : value,
-    }));
-  };
-
-  const handleSubmit = (e: FormEvent<HTMLInputElement>) => {
-    e.preventDefault();
-    const { fx, xi, error } = info;
-    const tolerance = error;
-
-    let currentXi = xi;
-    let currentError = 100;
-    let iteration = 1;
-    const newIterations: IterationResult[] = [];
-
-    while (currentError > tolerance) {
-      const fxValue = evaluateFunction(fx, currentXi);
-      const fxPrime = firstDerivative(fx, currentXi);
-      const fxDoublePrime = secondDerivative(fx, currentXi);
-
-      const nextXi =
-        currentXi -
-        (fxValue * fxPrime) / (Math.pow(fxPrime, 2) - fxValue * fxDoublePrime);
-
-      currentError = Math.abs((nextXi - currentXi) / nextXi) * 100;
-
-      newIterations.push({
-        iteration,
-        xi: nextXi, // Usamos nextXi para la siguiente iteración
-        error: currentError,
-      });
-
-      // Actualizar los valores para la siguiente iteración
-      currentXi = nextXi;
-      iteration += 1;
-    }
-
-    setIterations(newIterations);
+  // Función para manejar el envío del formulario
+  const handleSubmit = (event: React.FormEvent) => {
+    event.preventDefault(); // Previene la recarga de la página
+    const res = nrM(fx, xi, error); // Ejecuta la función Newton-Raphson Mejorado
+    setResultados(res); // Almacena los resultados en el estado
   };
 
   return (
-    <form>
-      <div className="flex flex-col items-center space-y-4">
-        <label htmlFor="fx" className="font-extrabold">
+    <div className="flex flex-col items-center p-4">
+      {/* Formulario para cambiar los valores */}
+      <form
+        onSubmit={handleSubmit}
+        className="flex flex-col space-y-4 w-full max-w-lg"
+      >
+        <label className="font-extrabold">
           F(x):
+          <input
+            type="text"
+            value={fx}
+            onChange={(e) => setFx(e.target.value)}
+            className="h-8 w-full rounded-lg text-center mt-2 p-2 border border-gray-300"
+            placeholder="Ej. x^3 - 2*x - 5"
+            tabIndex={1} // Tabula primero a este campo
+          />
         </label>
-        <input
-          id="fx"
-          type="text"
-          value={info.fx}
-          onChange={handleChange}
-          className="h-8 w-full rounded-lg text-center"
-          placeholder="Ej. x^2 + 2*x + 1"
-        />
 
-        <label htmlFor="xi" className="font-extrabold p-3">
-          Xi
+        <label className="font-extrabold">
+          Xi:
+          <input
+            type="number"
+            step="0.01"
+            value={xi}
+            onChange={(e) => setXi(Number(e.target.value))}
+            className="h-8 w-full rounded-lg text-center mt-2 p-2 border border-gray-300"
+            placeholder="Ej. 2, 3.1, 5"
+            tabIndex={2} // Tabula a este campo segundo
+          />
         </label>
-        <input
-          id="xi"
-          type="number"
-          step="0.01"
-          value={info.xi}
-          onChange={handleChange}
-          className="h-8 w-full rounded-lg text-center"
-          placeholder="Ej. 1, 2.2, 123.123"
-        />
 
-        <label htmlFor="error" className="font-extrabold p-3">
-          % Error
+        <label className="font-extrabold">
+          % Error:
+          <input
+            type="number"
+            step="0.01"
+            value={error}
+            onChange={(e) => setError(Number(e.target.value))}
+            className="h-8 w-full rounded-lg text-center mt-2 p-2 border border-gray-300"
+            placeholder="Ej. 0.01, 0.1"
+            tabIndex={3} // Tabula a este campo tercero
+          />
         </label>
-        <input
-          id="error"
-          type="number"
-          step="0.01"
-          value={info.error}
-          onChange={handleChange}
-          className="h-8 w-full rounded-lg text-center"
-          placeholder="Ej. 0.1, 5, 100"
-        />
 
-        {/* Botón de envío */}
-        <input
+        <button
           type="submit"
-          value="Resolver"
           onClick={handleSubmit}
-          className="text-white bg-indigo-900 hover:text-yellow-500 p-3 my-1 w-full rounded hover:bg-indigo-700 cursor-pointer disabled:opacity-50"
-        />
-      </div>
+          className="text-white bg-indigo-900 hover:text-yellow-500 p-3 my-2 w-full rounded hover:bg-indigo-700 cursor-pointer"
+          tabIndex={4} // Este botón será el siguiente
+        >
+          Resolver
+        </button>
+      </form>
 
-      {/* Tabla de resultados de iteraciones */}
-      {iterations.length > 0 && (
+      {/* Tabla para mostrar los resultados */}
+      {resultados.length > 0 && (
         <div className="overflow-x-auto mt-6 w-full max-w-md">
-          <h2 className="font-bold text-center">Resultados de Iteraciones</h2>
-          <table className="min-w-full bg-gray-100 border border-gray-300 rounded-lg shadow-md">
-            <thead className="bg-indigo-900 rounded-t-lg">
-              <tr>
-                <th className="text-gray-300 px-4 py-2 rounded-tl-lg">
-                  Iteración
-                </th>
-                <th className="text-gray-300 px-4 py-2">Xi Actual</th>
-                <th className="text-gray-300 px-4 py-2 rounded-tr-lg">
-                  % Error
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              {iterations.map(({ iteration, xi, error }, index) => (
-                <tr
-                  key={iteration}
-                  className={index % 2 === 0 ? "bg-gray-200" : "bg-gray-100"}
-                >
-                  <td className="border border-gray-300 px-4 py-2 text-center">
-                    {iteration}
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2 text-center">
-                    {xi.toFixed(6)}
-                  </td>
-                  <td className="border border-gray-300 px-4 py-2 text-center">
-                    {error.toFixed(6)}
-                  </td>
+          <div className="w-full max-w-4xl">
+            <h3 className="font-extrabold text-xl mb-3 text-center">
+              Resultados:
+            </h3>
+            <table className="min-w-full bg-gray-50 border border-gray-300 rounded-lg shadow-md">
+              <thead className="bg-indigo-900">
+                <tr>
+                  <th className="py-2 px-2 text-left text-gray-300 font-bold">
+                    Iteración
+                  </th>
+                  <th className="py-2 px-4 text-left text-gray-300 font-bold">
+                    Xi
+                  </th>
+                  <th className="py-2 px-4 text-left text-gray-300 font-bold">
+                    % Error
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {resultados.map((resultado, index) => (
+                  <tr
+                    key={index}
+                    className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                  >
+                    <td className="py-2 px-2 border-b border-gray-300">
+                      {resultado.iteracion}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-300">
+                      {resultado.xi.toFixed(5)}
+                    </td>
+                    <td className="py-2 px-4 border-b border-gray-300">
+                      {resultado.error.toFixed(5)}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
       )}
-    </form>
+    </div>
   );
 }

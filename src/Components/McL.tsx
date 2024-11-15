@@ -17,27 +17,26 @@ export default function Mc() {
   return (
     <div className="flex flex-col items-center p-4">
       {/* Inputs para x y terms */}
-      <div className="flex space-x-4 mb-4">
-        <div className="flex flex-col">
-          <label className="text-sm font-semibold mb-1">Valor de x:</label>
-          <input
-            type="number"
-            value={x}
-            onChange={(e) => setX(parseFloat(e.target.value))}
-            className="border rounded px-3 py-2 text-center"
-          />
-        </div>
-        <div className="flex flex-col">
-          <label className="text-sm font-semibold mb-1">
-            Número de términos:
-          </label>
-          <input
-            type="number"
-            value={terms}
-            onChange={(e) => setTerms(parseInt(e.target.value))}
-            className="border rounded px-3 py-2 text-center"
-          />
-        </div>
+
+      <div className="flex flex-col">
+        <label className="text-sm font-semibold mb-1">Valor de x:</label>
+        <input
+          type="number"
+          value={x}
+          onChange={(e) => setX(parseFloat(e.target.value))}
+          className="border rounded px-3 py-2 text-center"
+        />
+      </div>
+      <div className="flex flex-col">
+        <label className="text-sm font-semibold mb-1">
+          Número de términos:
+        </label>
+        <input
+          type="number"
+          value={terms}
+          onChange={(e) => setTerms(parseInt(e.target.value))}
+          className="border rounded px-3 py-2 text-center"
+        />
       </div>
 
       {/* Botón de cálculo */}

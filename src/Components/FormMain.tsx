@@ -39,11 +39,14 @@ export default function Formulario() {
   return (
     <div className="flex justify-center items-center min-h-screen bg-indigo-900 p-4">
       <form
-        className="bg-indigo-200 p-10 rounded-lg border border-gray-500 w-full max-w-lg"
+        className="bg-indigo-200 p-6 md:p-10 rounded-lg border border-gray-500 w-full max-w-md md:max-w-lg"
         onSubmit={handleSubmit} // Agregar el evento onSubmit
       >
         <div className="grid grid-cols-1 gap-4">
-          <label htmlFor="category" className="font-extrabold text-lg">
+          <label
+            htmlFor="category"
+            className="font-extrabold text-lg text-center md:text-left"
+          >
             Selecciona una categoría:
           </label>
           <select
@@ -60,7 +63,10 @@ export default function Formulario() {
           </select>
 
           <div className="grid grid-cols-1 gap-3">
-            <label htmlFor="Valores" className="font-extrabold text-lg">
+            <label
+              htmlFor="Valores"
+              className="font-extrabold text-lg text-center md:text-left"
+            >
               Ingresa los valores:
             </label>
             {/* Renderiza el formulario correspondiente a la categoría seleccionada */}

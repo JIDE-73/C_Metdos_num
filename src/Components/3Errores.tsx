@@ -1,12 +1,6 @@
 import { useState } from "react";
 import { Terroress } from "../data/3Errores"; // Asegúrate de que la ruta sea correcta
-
-// Define la interfaz para los resultados
-interface Terrores {
-  eAbsoluto: number;
-  eRelativo: number;
-  ePorcentual: number;
-}
+import { Terrores } from "../types";
 
 export default function CalcularErrores() {
   const [vReal, setVReal] = useState<number>(0);
@@ -21,7 +15,7 @@ export default function CalcularErrores() {
   };
 
   return (
-    <div className="flex flex-col items-center p-6 max-w-4xl mx-auto">
+    <div className="flex flex-col items-center p-4">
       {/* Formulario para los valores */}
       <form
         onSubmit={handleSubmit}
@@ -62,44 +56,47 @@ export default function CalcularErrores() {
 
       {/* Tabla para mostrar los resultados */}
       {errores.length > 0 && (
-        <div className="mt-6 w-full flex justify-center">
+        <div className="overflow-x-auto mt-6 w-full max-w-md">
           <div className="w-full max-w-4xl">
             <h3 className="font-extrabold text-xl mb-3 text-center">
               Resultados de Errores:
             </h3>
-            <table className="min-w-full bg-gray-50 border border-gray-300 rounded-lg shadow-md">
+            <div className="overflow-x-auto">
+              {/* Añadir scroll horizontal si la tabla excede el ancho */}
+              <table className="min-w-full bg-gray-50 border border-gray-300 rounded-lg shadow-md">
               <thead className="bg-indigo-900">
-                <tr>
-                  <th className="py-2 px-4 text-left text-gray-300 font-bold">
-                    Error Absoluto
-                  </th>
-                  <th className="py-2 px-4 text-left text-gray-300 font-bold">
-                    Error Relativo
-                  </th>
-                  <th className="py-2 px-4 text-left text-gray-300 font-bold">
-                    Error Porcentual
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                {errores.map((error, index) => (
-                  <tr
-                    key={index}
-                    className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
-                  >
-                    <td className="py-2 px-4 border-b border-gray-300">
-                      {error.eAbsoluto.toFixed(5)}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
-                      {error.eRelativo.toFixed(5)}
-                    </td>
-                    <td className="py-2 px-4 border-b border-gray-300">
-                      {error.ePorcentual.toFixed(5)}%
-                    </td>
+                  <tr>
+                    <th className="py-2 px-4 text-left text-gray-300 font-bold">
+                      Error Absoluto
+                    </th>
+                    <th className="py-2 px-4 text-left text-gray-300 font-bold">
+                      Error Relativo
+                    </th>
+                    <th className="py-2 px-4 text-left text-gray-300 font-bold">
+                      Error Porcentual
+                    </th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {errores.map((error, index) => (
+                    <tr
+                      key={index}
+                      className={index % 2 === 0 ? "bg-gray-50" : "bg-white"}
+                    >
+                      <td className="py-2 px-4 border-b border-gray-300">
+                        {error.eAbsoluto.toFixed(5)}
+                      </td>
+                      <td className="py-2 px-4 border-b border-gray-300">
+                        {error.eRelativo.toFixed(5)}
+                      </td>
+                      <td className="py-2 px-4 border-b border-gray-300">
+                        {error.ePorcentual.toFixed(5)}%
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       )}

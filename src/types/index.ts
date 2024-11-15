@@ -6,13 +6,13 @@ export type Category = {
   name: string;
 };
 
-export type nr = {
+export interface nr {
   //no cambiar
   //newton rapshon y mejorado
-  fx: string;
+  iteracion: number;
   xi: number;
   error: number;
-};
+}
 //editables --->
 //datos de resultado secante
 export interface iterSec {
