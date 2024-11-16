@@ -1,11 +1,11 @@
 import { useState } from "react";
-import { nrM } from "../data/NR"; // Importa la función de Newton-Raphson Mejorado
-import { nr } from "../types"; // Asegúrate de que IteracionNR esté bien definida
+import { nrM } from "../data/NR";
+import { nr } from "../types";
 
 export default function NewtonRaphsonMejorado() {
-  const [fx, setFx] = useState<string>("x^3 - 2*x - 5");
-  const [xi, setXi] = useState<number>(2);
-  const [error, setError] = useState<number>(0.01);
+  const [fx, setFx] = useState<string>("x^3 - 4*x^2 +6x -24");
+  const [xi, setXi] = useState<number>(3);
+  const [error, setError] = useState<number>(0.1);
   const [resultados, setResultados] = useState<nr[]>([]);
 
   // Función para manejar el envío del formulario

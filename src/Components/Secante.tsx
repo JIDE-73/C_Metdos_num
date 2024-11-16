@@ -4,10 +4,10 @@ import { IteracionSecante } from "../types"; // Asegúrate de que IteracionSecan
 import { iterSec } from "../types";
 
 export default function MetodoSecante() {
-  const [fx, setFx] = useState(""); // Valor de la función
-  const [xiPrev, setXiPrev] = useState(0); // Valor de Xi-1
-  const [xiCurr, setXiCurr] = useState(0); // Valor de Xi
-  const [error, setError] = useState(0); // Valor del % de error
+  const [fx, setFx] = useState("8*x^3 + 2x^2 - 5*x - 6"); // Valor de la función
+  const [xiPrev, setXiPrev] = useState(4); // Valor de Xi-1
+  const [xiCurr, setXiCurr] = useState(5); // Valor de Xi
+  const [error, setError] = useState(5); // Valor del % de error
   const [resultados, setResultados] = useState<IteracionSecante[]>([]); // Almacenar resultados
 
   const handleSubmit = (e: React.FormEvent) => {

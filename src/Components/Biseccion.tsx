@@ -3,10 +3,10 @@ import { biseccion } from "../data/Bisec"; // Importa la función de bisección
 import { IteracionBiseccion } from "../types"; // Asegúrate de que IteracionBiseccion esté bien definida
 
 export default function Biseccion() {
-  const [fx, setFx] = useState<string>("x^2 - 4");
-  const [xi, setXi] = useState<number>(1);
-  const [xs, setXs] = useState<number>(3);
-  const [error, setError] = useState<number>(0.01);
+  const [fx, setFx] = useState<string>("x^4 +7x^3 -7");
+  const [xi, setXi] = useState<number>(0);
+  const [xs, setXs] = useState<number>(1);
+  const [error, setError] = useState<number>(0.5);
   const [resultados, setResultados] = useState<IteracionBiseccion[]>([]);
 
   // Función para manejar el envío del formulario

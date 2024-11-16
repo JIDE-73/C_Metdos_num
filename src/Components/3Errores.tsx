@@ -3,8 +3,8 @@ import { Terroress } from "../data/3Errores"; // Asegúrate de que la ruta sea c
 import { Terrores } from "../types";
 
 export default function CalcularErrores() {
-  const [vReal, setVReal] = useState<number>(0);
-  const [vAprox, setVAprox] = useState<number>(0);
+  const [vReal, setVReal] = useState<number>(4.5);
+  const [vAprox, setVAprox] = useState<number>(4.444);
   const [errores, setErrores] = useState<Terrores[]>([]);
 
   // Manejar el envío del formulario
@@ -64,7 +64,7 @@ export default function CalcularErrores() {
             <div className="overflow-x-auto">
               {/* Añadir scroll horizontal si la tabla excede el ancho */}
               <table className="min-w-full bg-gray-50 border border-gray-300 rounded-lg shadow-md">
-              <thead className="bg-indigo-900">
+                <thead className="bg-indigo-900">
                   <tr>
                     <th className="py-2 px-4 text-left text-gray-300 font-bold">
                       Error Absoluto

@@ -3,9 +3,9 @@ import { nr } from "../types";
 import { useState } from "react";
 
 export default function NewtonRaphson() {
-  const [fx, setFx] = useState<string>("x^2 - 4");
-  const [xi, setXi] = useState<number>(1);
-  const [error, setError] = useState<number>(0.01);
+  const [fx, setFx] = useState<string>("19*x^7 -6x^4 -19");
+  const [xi, setXi] = useState<number>(3);
+  const [error, setError] = useState<number>(0.5);
   const [resultados, setResultados] = useState<nr[]>([]);
 
   // Función para manejar el envío del formulario

@@ -3,9 +3,9 @@ import { Taylor } from "../data/Taylor";
 import { serieT } from "../types";
 
 export default function Tay() {
-  const [fx, setFx] = useState("");
-  const [xi, setXi] = useState<number | string>("");
-  const [h, setH] = useState<number | string>("");
+  const [fx, setFx] = useState("-0.1x^4 -0.15x^3 -0.5x^2 -0.25*x +1.2");
+  const [xi, setXi] = useState<number | string>("0");
+  const [h, setH] = useState<number | string>("1");
   const [terms, setTerms] = useState<number | string>("");
   const [resultados, setResultados] = useState<serieT[]>([]);
 
