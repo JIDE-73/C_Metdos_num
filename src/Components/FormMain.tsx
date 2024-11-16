@@ -7,6 +7,7 @@ import Bis from "./Biseccion";
 import Sec from "./Secante";
 import Mc from "./McL";
 import Tay from "./Taylor";
+import Inter from "./interpolacion";
 
 // Mapa de componentes de formularios por categoría
 const formComponents: { [key: number]: JSX.Element } = {
@@ -14,7 +15,7 @@ const formComponents: { [key: number]: JSX.Element } = {
   2: <Mc />, //McLaurin
   3: <Tay />, //Taylor
   4: <Bis />, //Biseccion
-  5: <></>, //Interpolacion
+  5: <Inter />, //Interpolacion
   6: <FNR />, //Newton
   7: <FNRM />, //mejorado
   8: <Sec />, //Secante

@@ -25,7 +25,6 @@ export interface iterSec {
   fXiNext: number; // Renombrado de fxm1 a fXiNext
   error: number;
 }
-
 export interface IteracionSecante {
   iteraciones: number;
   xi: number;
@@ -65,3 +64,13 @@ export interface serieT {
   AproV: number;
   errorTr: number;
 }
+
+//interpolacion
+export type interPol = {
+  x: number; // Valor de x ingresado para interpolar
+  fx: number; // Resultado de la interpolación f(x)
+  x0: number; // Punto inferior del rango
+  x1: number; // Punto superior del rango
+  fx0: number; // Valor de f(x0)
+  fx1: number; // Valor de f(x1)
+};
