@@ -74,3 +74,6 @@ export type interPol = {
   fx0: number; // Valor de f(x0)
   fx1: number; // Valor de f(x1)
 };
+
+declare module "*.jpg";
+declare module "*.png";
