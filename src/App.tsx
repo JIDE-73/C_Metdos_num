@@ -13,7 +13,11 @@ const Header = () => {
   return (
     <header className="bg-gray-800 py-3 text-gray-400">
       <div className="max-w-4xl mx-auto flex items-center justify-between px-4">
-        <h1 className="text-center text-lg font-bold uppercase flex-1">
+        {/* Navegar a la página anterior al hacer clic en el título */}
+        <h1
+          className="text-center text-lg font-bold uppercase flex-1 cursor-pointer hover:text-gray-200"
+          onClick={() => navigate(-1)} // Navega a la página anterior
+        >
           Calculadoras
         </h1>
         <button
