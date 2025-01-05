@@ -1,7 +1,7 @@
 // Importa las imágenes
-import beto from "../assets/beto.jpg";
+
 import leo from "../assets/leo.jpg";
-import juan from "../assets/juan.jpg";
+
 //import Iconos
 import gitIcon from "../assets/git.svg";
 import linkedIcon from "../assets/linked.svg";
@@ -10,19 +10,6 @@ import faceIcon from "../assets/facebook.svg";
 
 export default function Integrantes() {
   const teamMembers = [
-    {
-      name: "Alberto Carlos Ruvalcaba Fernandez",
-      role: "Desarrollador Frontend",
-      description: "Desarrollo en Tailwind css",
-      image: beto,
-      icons: [
-        {
-          icon: faceIcon,
-          link: "https://www.facebook.com/alberto.rubalcaba.52",
-        },
-        { icon: igIcon, link: "https://www.instagram.com/ruva_alberto/" },
-      ],
-    },
     {
       name: "Leonardo Sebastian Jimenez Delgado",
       role: "Desarrolladora Backend",
@@ -37,13 +24,6 @@ export default function Integrantes() {
         { icon: igIcon, link: "https://www.instagram.com/limon_leo_limon/" },
         { icon: faceIcon, link: "https://www.facebook.com/taquitos.leonardo" },
       ],
-    },
-    {
-      name: "Juan Carlos Muriedas Torres",
-      role: "Diseñador de componentes, Tester",
-      description: "Encargado de solucionar errores",
-      image: juan,
-      icons: [{ icon: gitIcon, link: "https://github.com/Muriedas" }],
     },
   ];
 
