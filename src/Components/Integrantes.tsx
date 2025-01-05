@@ -12,8 +12,8 @@ export default function Integrantes() {
   const teamMembers = [
     {
       name: "Leonardo Sebastian Jimenez Delgado",
-      role: "Desarrolladora Backend",
-      description: "Desarrollador experto en React",
+      role: "Desarrollador web",
+      description: "Programador de front-end y back-end, estudiante de ingeniería en sistemas computacionales.",
       image: leo,
       icons: [
         { icon: gitIcon, link: "https://github.com/JIDE-73" },

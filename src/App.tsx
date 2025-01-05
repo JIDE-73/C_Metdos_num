@@ -25,7 +25,7 @@ const Header = () => {
           onClick={() => navigate("/integrantes")}
           className="text-white bg-slate-700 hover:text-indigo-950 p-3 rounded hover:bg-slate-500 cursor-pointer border border-indigo-900 hover:border-indigo-700"
         >
-          Desarrolladores
+          Desarrollador
         </button>
       </div>
     </header>
